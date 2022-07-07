@@ -23,10 +23,17 @@ You might need to update your serverless Apache Spark pool environment for vario
 - Your team has built a custom package that you need available in your Apache Spark pool.
 
 To make third party or locally built code available to your applications, install a library onto one of your serverless Apache Spark pools or notebook session.
+
+> [!IMPORTANT]
+>
+> - There are three levels of packages installation on Synapse Analytics, default level, Spark pool level and session-scoped level. 
+> - Apache Spark in Azure Synapse Analytics has a full Anaconda install plus extra common libraries served on the default level which is fully managed by Synapse Analytics. The pool level packages can be used by all Artifacts, e.g., Notebook and Spark Job Definition, that are attaching the corresponding Spark pool. And the session-scoped level packages will create an environment for a Notebook session, these libraries won't be persisted between sessions. 
+> - Workspace packages allows you to upload custom packages or a specific version of an open-source library that you would like to use in your Azure Synapse Analytics Workspace. These packages can be installed to your Spark pool.
+> - To be noted, the installation process on Spark pool level would take certain amount of waiting time and has impact to all running Artifacts attached to the pool, we suggest to use session-scoped installing for experiments or quick iterative purposes. 
   
 ## Default Installation
 
-Apache Spark in Azure Synapse Analytics has a full Anaconda install plus extra libraries. The full libraries list can be found at [Apache Spark version support](apache-spark-version-support.md).
+Apache Spark in Azure Synapse Analytics has a full Anaconda install plus extra common libraries. The full libraries list can be found at [Apache Spark version support](apache-spark-version-support.md).
 
 When a Spark instance starts, these libraries are included automatically. More packages can be added at the Spark pool level or session level.
 
